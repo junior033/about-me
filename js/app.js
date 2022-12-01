@@ -8,7 +8,7 @@ alert(`Welcome to my site ${userName}. Please answer the following quesitons wit
 let questionOneGuess = prompt('Do I have a son?').toLowerCase();
 
 if (questionOneGuess === 'yes' || questionOneGuess === 'y') {
-  alert('You got it right!')
+  alert('You got it right!');
   answerTracker++;
 } else if (questionOneGuess === 'no' || questionOneGuess === 'n') {
   alert('Sorry, you got it wrong.');
@@ -50,19 +50,26 @@ if (questionFiveGuess === 'yes' || questionFiveGuess === 'y') {
   answerTracker++;
 }
 
+let attempts = 4;
 
 for (let i = 0; i < 4; i++) {
-  let questionSixGuess = prompt('How many countries have I visited?');
+
+  let questionSixGuess = prompt(`How many countries have I visited? You have ${attempts} attempts.`);
 
   if (parseInt(questionSixGuess) === 16){
     alert('You got it right!');
     answerTracker++;
     i = 4;
   }else if (questionSixGuess > 16) {
-    alert('You guessed too high! Try again!');
-  } else if (questionSixGuess < 16) {
-    alert('You guessed too low! Try again!');
+    alert('You guessed too high!');
+    attempts--;
+  }else if (questionSixGuess < 16) {
+    alert('You guessed too low!');
+    attempts--;
+  }
 
+  if(attempts === 0){
+    alert('I have visited 16 different countries.');
   }
 }
 
